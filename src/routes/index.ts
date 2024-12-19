@@ -12,7 +12,7 @@ const routes: Route[] = [
 ]
 
 routes.forEach(({ path, reqHandler }: Route) => {
-	router.use(path, router);
+	router.use(path, reqHandler);
 })
 
 export default router;
