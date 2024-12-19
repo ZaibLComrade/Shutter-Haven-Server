@@ -16,3 +16,17 @@ const main = () => {
 	}
 };
 main();
+
+process.on("uncaughtException", () => {
+	console.log("Uncaught exception detected. Shutting down server...");
+	process.exit(1);
+});
+
+process.on("unhandledRejection", () => {
+	console.log("Unhandled rejection detected. Shutting down server...");
+	if (server) {
+		server.close(() => {
+			process.exit(1);
+		});
+	}
+});
