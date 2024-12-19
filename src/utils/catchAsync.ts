@@ -1,4 +1,4 @@
-import { AsyncReqHandler } from "@types";
+import { AsyncReqHandler } from "../@types";
 import { NextFunction, Response, Request } from "express";
 
 // Custom request handler
