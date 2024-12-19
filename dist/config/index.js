@@ -11,4 +11,5 @@ dotenv_1.default.config({ path: path_1.default.join(process.cwd(), ".env") });
 const inDevMode = !!(process.env.NODE_ENV === "development");
 exports.config = {
     port: (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 5000,
+    db_uri: process.env.DB_URI,
 };

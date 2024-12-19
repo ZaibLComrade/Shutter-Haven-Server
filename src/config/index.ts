@@ -3,12 +3,9 @@ import path from "path";
 
 dotenv.config({ path: path.join(process.cwd(), ".env") })
 
-interface Config {
-	port: string | number;
-}
-
 const inDevMode = !!(process.env.NODE_ENV === "development")
 
-export const config: Config = {
+export const config = {
 	port: process.env.PORT ?? 5000,
+	db_uri: process.env.DB_URI as string,
 }
