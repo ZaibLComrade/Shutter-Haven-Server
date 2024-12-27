@@ -5,3 +5,9 @@ export type AsyncReqHandler = (
 	res: Response,
 	next: NextFunction
 ) => Promise<void>;
+
+export type TSearchQuery = {
+	[key?: string]: string,
+	_id?: string,
+	user?: string,
+}
