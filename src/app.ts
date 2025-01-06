@@ -3,8 +3,14 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import router from "./routes";
+import {speedLimiter} from "./utils/speedLimiter";
+import {rateLimiter} from "./utils/rateLimiter";
 
 const app: Express = express();
+
+app.set("trust proxy", 1);
+app.use(rateLimiter);
+app.use(speedLimiter);
 
 app.use(
 	cors({
@@ -12,7 +18,7 @@ app.use(
 		credentials: true,
 	})
 );
-app.use(express.json());
+app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
 app.use("/api/v1", router);
 
