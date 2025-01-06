@@ -1,19 +1,24 @@
 # Shutter-Haven
+
+# Live Link: https://shutter-haven-server.vercel.app/
+
 # API Documentation
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [Credentials](#credentials)
-- [API Endpoints](#api-endpoints)
-    - [Authentication Routes](#authentication-routes)
-    - [User Routes](#user-routes)
-    - [Product Routes](#product-routes)
-    - [Cart Routes](#cart-routes)
-- [Middleware](#middlewares)
-- [Project Scripts](#project-scripts)
-- [Notes](#notes)
+
+-   [Introduction](#introduction)
+-   [Installation](#installation)
+-   [Running the Application](#running-the-application)
+-   [Credentials](#credentials)
+-   [API Endpoints](#api-endpoints)
+    -   [Authentication Routes](#authentication-routes)
+    -   [User Routes](#user-routes)
+    -   [Product Routes](#product-routes)
+    -   [Cart Routes](#cart-routes)
+-   [Middleware](#middlewares)
+-   [Project Scripts](#project-scripts)
+-   [Notes](#notes)
+
 ---
 
 ## Introduction
@@ -25,68 +30,67 @@ The Shutter Haven Server is a backend system designed for a photography e-commer
 ## Installation
 
 1. Clone the repository:
-    
+
     ```
     git clone https://github.com/ZaibLComrade/Shutter-Haven-Server.git
     cd shutter-haven-server
     ```
-    
+
 2. Install dependencies:
-    
+
     ```
     npm install
     ```
-    
+
 3. Set up environment variables: Create a `.env` file in the root directory and add the following variables:
-    
+
     ```
     PORT=5000
     MONGO_URI=<your-mongodb-connection-string>
     JWT_SECRET=<your-jwt-secret>
     ```
-    
+
 4. Build the application:
-    
+
     ```
     npm run build
     ```
-    
 
 ---
 
 ## Running the Application
 
-- For production:
-    
+-   For production:
     ```
     npm start
     ```
-    
-- For development (with live reload):
-    
+-   For development (with live reload):
     ```
     npm run dev
     ```
-    
 
 ---
 
 ## Credentials
+
 `PS: Credentials are usable on live deployment only`
 
 ### Admin
+
 ```
 email: user@admin.com
 password: user@admin.com
 ```
 
 ### Seller
+
 ```
 email: user@seller.com
 password: user@seller.com
 ```
 
 ### Buyer
+
 ```
 email: user@buyer.com
 password: user@buyer.com
@@ -105,8 +109,10 @@ http://localhost:<PORT>/api/v1
 ### Authentication Routes
 
 #### Register a new user
-- Endpoint: POST `/auth/register`
-- Request Body:
+
+-   Endpoint: POST `/auth/register`
+-   Request Body:
+
 ```
 {
   "name": "John Doe",
@@ -115,7 +121,9 @@ http://localhost:<PORT>/api/v1
   "role": "BUYER"
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -131,15 +139,19 @@ http://localhost:<PORT>/api/v1
 ```
 
 #### Login
-- Endpoint: POST `/auth/login`
-- Request Body:
+
+-   Endpoint: POST `/auth/login`
+-   Request Body:
+
 ```
 {
   "email": "john@example.com",
   "password": "securepassword123"
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -157,12 +169,16 @@ http://localhost:<PORT>/api/v1
 ### User Routes
 
 #### Get all users (Admin only)
-- Endpoint: GET `/users`
-- Headers:
+
+-   Endpoint: GET `/users`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -180,18 +196,24 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Update user role (Admin only)
-- Endpoint: PATCH `/users/update-role/:id`
-- Headers:
+
+-   Endpoint: PATCH `/users/update-role/:id`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Request Body:
+
+-   Request Body:
+
 ```
 {
   "role": "SELLER"
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -201,12 +223,16 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Delete a user (Admin only)
-- Endpoint: POST `/users/:id`
-- Headers:
+
+-   Endpoint: POST `/users/:id`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -218,8 +244,10 @@ Authorization: Bearer <jwt_token>
 ### Product Routes
 
 #### Get all products
-- Endpoint: GET `/products`
-- Response:
+
+-   Endpoint: GET `/products`
+-   Response:
+
 ```
 {
   "succcess": true,
@@ -230,8 +258,10 @@ Authorization: Bearer <jwt_token>
 ```
 
 ### Get product by Id
-- Endpoint: GET `/products/:id`,
-- Response:
+
+-   Endpoint: GET `/products/:id`,
+-   Response:
+
 ```
 {
   "succcess": true,
@@ -242,8 +272,10 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Get seller specific product
-- Endpoint: GET `/products?id=<Seller_ID>`
-- Response:
+
+-   Endpoint: GET `/products?id=<Seller_ID>`
+-   Response:
+
 ```
 {
   "succcess": true,
@@ -254,12 +286,16 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Create a product (Seller only)
-- Endpoint: POST `products`
-- Headers:
+
+-   Endpoint: POST `products`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Request Body:
+
+-   Request Body:
+
 ```
 {
     "name": "Canon EOS R6 Mark II",
@@ -284,7 +320,9 @@ Authorization: Bearer <jwt_token>
     "featured": true
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
     "success": true,
@@ -322,19 +360,25 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Update a product (Seller only)
-- Endpoint: PUT `/products/:id`
-- Headers:
+
+-   Endpoint: PUT `/products/:id`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Request Body:
+
+-   Request Body:
+
 ```
 {
   "price": 899.99,
   "stock": 15
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -349,12 +393,16 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Delete a product (Seller only)
-- Endpoint: DELETE `/products/:id`
-- Headers:
+
+-   Endpoint: DELETE `/products/:id`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -366,12 +414,16 @@ Authorization: Bearer <jwt_token>
 ### Cart Routes
 
 #### Get user cart (Buyer only)
-- Endpoint: GET `/cart`
-- Headers:
+
+-   Endpoint: GET `/cart`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -403,19 +455,25 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Add item to cart (Buyer only)
-- Endpoint: POST `/cart`
-- Headers:
+
+-   Endpoint: POST `/cart`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Request Body:
+
+-   Request Body:
+
 ```
 {
   "productId": "product_id",
   "quantity": 1
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -447,18 +505,24 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Update cart item quantity (Buyer only)
-- Endpoint: PATCH `/cart/:productId`
-- Headers:
+
+-   Endpoint: PATCH `/cart/:productId`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Request Body:
+
+-   Request Body:
+
 ```
 {
   "quantity": 2
 }
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -490,12 +554,16 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Remove item from cart (Buyer only)
-- Endpoint: DELETE `/cart/:productId`
-- Headers:
+
+-   Endpoint: DELETE `/cart/:productId`
+-   Headers:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
-- Response:
+
+-   Response:
+
 ```
 {
   "success": true,
@@ -518,19 +586,14 @@ Authorization: Bearer <jwt_token>
 
 ### `verifyUser`
 
-- Ensures the user is authenticated by validating the JWT token in the request headers.
-    
+-   Ensures the user is authenticated by validating the JWT token in the request headers.
 
 ### `verifyRole`
 
-- Checks if the user has the appropriate role to access a particular endpoint. Roles include:
-    
-    - `ADMIN`
-        
-    - `SELLER`
-        
-    - `BUYER`
-        
+-   Checks if the user has the appropriate role to access a particular endpoint. Roles include:
+    -   `ADMIN`
+    -   `SELLER`
+    -   `BUYER`
 
 ---
 
@@ -546,12 +609,9 @@ Authorization: Bearer <jwt_token>
 
 ## Notes
 
-- This application uses **Mongoose** for MongoDB schema and database operations.
-    
-- The server follows RESTful design principles, making it easy to extend and integrate with other systems.
-    
-- Ensure to replace placeholders in the `.env` file with actual values before running the application.
-    
+-   This application uses **Mongoose** for MongoDB schema and database operations.
+-   The server follows RESTful design principles, making it easy to extend and integrate with other systems.
+-   Ensure to replace placeholders in the `.env` file with actual values before running the application.
 
 ---
 
