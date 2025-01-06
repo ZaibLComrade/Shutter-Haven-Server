@@ -15,7 +15,7 @@ export const createProduct = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getAllProducts = catchAsync(
-	async (_req: Request, res: Response) => {
+	async (req: Request, res: Response) => {
 		const data = await ProductService.getAllProducts();
 		if (!data) throw new ApiError(404, "Products not found");
 		res.status(200).json({

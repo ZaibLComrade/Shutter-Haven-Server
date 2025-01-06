@@ -1,7 +1,12 @@
 export enum UserRole {
-	ADMIN = "admin",
-	BUYER = "buyer",
-	SELLER = "seller",
+	ADMIN = "Admin",
+	BUYER = "Buyer",
+	SELLER = "Seller",
+}
+
+export interface ICartItem {
+	product: string;
+	quantity: number
 }
 
 export interface IUser {
@@ -10,4 +15,5 @@ export interface IUser {
 	email: string;
 	password: string;
 	role: UserRole;
+	cart: ICartItem[];
 }

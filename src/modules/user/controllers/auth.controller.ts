@@ -14,8 +14,22 @@ export const register = catchAsync(async (req: Request, res: Response) => {
 		email,
 		password: hashedPassword,
 		role,
+		cart: [],
 	});
 	user.password = "";
+
+	const token = jwt.sign(
+		{ id: user?.id, role: user?.role },
+		config.jwt_secret,
+		{
+			expiresIn: "1h",
+		}
+	);
+
+	res.cookie("auth-token", token, {
+		secure: !config.inDevMode,
+		httpOnly: true,
+	});
 
 	if (!user) throw new ApiError(400, "Couldn't create user");
 	res.status(200).json({
@@ -33,7 +47,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
 	if (!user || !(await bcrypt.compare(password, user.password))) {
 		res.status(400).json({ message: "Invalid email or password" });
 	}
-	
+
 	user!.password = "";
 
 	const token = jwt.sign(
@@ -53,6 +67,6 @@ export const login = catchAsync(async (req: Request, res: Response) => {
 		success: true,
 		statusCode: 200,
 		message: "User logged in successfully",
-		data: user
+		data: user,
 	});
 });

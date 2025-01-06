@@ -1,5 +1,7 @@
 import { Router } from "express";
 import * as ProductController from "./products.controller";
+import {verifyRole} from "../../middlewares/verifyRole";
+import {verifyUser} from "../../middlewares/verifyUser";
 
 const productsRoute = Router();
 

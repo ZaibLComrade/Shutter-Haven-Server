@@ -6,20 +6,25 @@ import router from "./routes";
 
 const app: Express = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: ["*"],
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1", router);
 
-app.all("/health", (req, res) => {
+app.all("/health", (_req, res) => {
 	res.status(200).json({
 		success: true,
 		statusCode: 200,
 		message: "Server is running",
-	})
-})
+	});
+});
 
-app.all("*", (req, res) => {
+app.all("*", (_req, res) => {
 	res.status(404).json({
 		success: false,
 		statusCode: 404,

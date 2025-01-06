@@ -1,11 +1,13 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { UserRole } from "./user.interface";
+import { UserRole, ICartItem } from "./user.interface";
+import { CartItemSchema } from "../cart/cart.schema";
 
 interface IUserModel extends Document {
-  name: string;
-  email: string;
-  password: string;
-  role: UserRole;
+	name: string;
+	email: string;
+	password: string;
+	role: UserRole;
+	cart: ICartItem[];
 }
 
 const UserSchema: Schema = new Schema(
@@ -18,6 +20,7 @@ const UserSchema: Schema = new Schema(
 			enum: Object.values(UserRole),
 			default: UserRole.BUYER,
 		},
+		cart: { type: [CartItemSchema], default: [] }, // Array of cart items
 	},
 	{ timestamps: true }
 );
