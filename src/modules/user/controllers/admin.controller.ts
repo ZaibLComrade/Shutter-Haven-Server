@@ -16,7 +16,8 @@ export const getUsers = catchAsync(async (_req: Request, res: Response) => {
 
 export const changeUserRole = catchAsync(
 	async (req: Request, res: Response) => {
-		const { id, role } = req.body;
+		const { id } = req.params;
+		const { role } = req.body;
 		const user = await updateUserRole(id, role);
 		res.status(200).json({
 			success: true,

@@ -1,6 +1,6 @@
 import { RequestHandler, Router } from "express";
 import productsRoute from "../modules/products/products.route";
-import userRouter from "../modules/user/user.route";
+import { authRouter, userRouter } from "../modules/user/user.route";
 
 interface Route {
 	path: string;
@@ -16,6 +16,10 @@ const routes: Route[] = [
 	},
 	{
 		path: "/auth",
+		reqHandler: authRouter,
+	},
+	{
+		path: "/users",
 		reqHandler: userRouter,
 	},
 ];

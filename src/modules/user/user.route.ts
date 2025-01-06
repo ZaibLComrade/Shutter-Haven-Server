@@ -7,21 +7,23 @@ import {
 } from "./controllers/admin.controller";
 import { verifyRole } from "../../middlewares/verifyRole";
 import { verifyUser } from "../../middlewares/verifyUser";
+import {userRole} from "../../constants/userRole";
 
+const authRouter = express.Router();
 const userRouter = express.Router();
 
 // Auth Routes
-userRouter.post("/register", register);
-userRouter.post("/login", login);
+authRouter.post("/register", register);
+authRouter.post("/login", login);
 
 // Admin Routes
-userRouter.get("/", verifyUser, verifyRole(["admin"]), getUsers);
+userRouter.get("/", verifyUser, verifyRole([userRole.ADMIN]), getUsers);
 userRouter.patch(
-	"/update-role",
+	"/update-role/:id",
 	verifyUser,
-	verifyRole(["admin"]),
+	verifyRole([userRole.ADMIN]),
 	changeUserRole
 );
-userRouter.delete("/:id", verifyUser, verifyRole(["admin"]), removeUser);
+userRouter.delete("/:id", verifyUser, verifyRole([userRole.ADMIN]), removeUser);
 
-export default userRouter;
+export { authRouter, userRouter };
