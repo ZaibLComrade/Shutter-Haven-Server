@@ -19,6 +19,7 @@ export const changeUserRole = catchAsync(
 		const { id } = req.params;
 		const { role } = req.body;
 		const user = await updateUserRole(id, role);
+		user!.password = "";
 		res.status(200).json({
 			success: true,
 			statusCode: 200,

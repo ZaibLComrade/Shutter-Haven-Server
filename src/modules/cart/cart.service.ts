@@ -37,3 +37,25 @@ export const getCart = async (userId: string) => {
 	if (!user) throw new ApiError(404, "User not found");
 	return user.cart;
 };
+
+export const updateCartQuantity = async (
+	userId: string,
+	productId: string,
+	quantity: number
+) => {
+	const user = await User.findOneAndUpdate(
+		{
+			_id: userId,
+			"cart.product": productId,
+		},
+		{
+			$set: { "cart.$.quantity": quantity },
+		},
+		{
+			new: true,
+		}
+	).populate("cart.product");
+
+	if (!user) throw new ApiError(404, "User or product in cart not found");
+	return user.cart;
+};

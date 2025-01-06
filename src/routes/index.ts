@@ -1,6 +1,7 @@
 import { RequestHandler, Router } from "express";
 import productsRoute from "../modules/products/products.route";
 import { authRouter, userRouter } from "../modules/user/user.route";
+import cartRouter from "../modules/cart/cart.route";
 
 interface Route {
 	path: string;
@@ -22,6 +23,10 @@ const routes: Route[] = [
 		path: "/users",
 		reqHandler: userRouter,
 	},
+	{
+		path: "/cart",
+		reqHandler: cartRouter,
+	}
 ];
 
 routes.forEach(({ path, reqHandler }: Route) => {

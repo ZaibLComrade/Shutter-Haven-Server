@@ -1,15 +1,15 @@
 import Product, { IProduct } from "./products.model";
 
-export const createProduct = async (data: IProduct) => {
+export const createProduct = async (data: IProduct, userId: string) => {
 	try {
-		return await Product.create(data);
+		return await Product.create({ ...data, createdBy: userId });
 	} catch (err) {
 		console.log(err);
 	}
 };
 
-export const getAllProducts = async () => {
-	return await Product.find();
+export const getAllProducts = async (query?: any = {}) => {
+	return await Product.find(query);
 };
 
 export const getProductById = async (id: string) => {

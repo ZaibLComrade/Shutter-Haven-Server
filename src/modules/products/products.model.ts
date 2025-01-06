@@ -9,6 +9,7 @@ interface ISpecs {
 }
 
 export interface IProduct extends Document {
+	createdBy: string;
 	name: string;
 	category: string;
 	price: number;
@@ -32,6 +33,7 @@ const SpecsSchema: Schema = new Schema({
 
 const ProductSchema: Schema = new Schema(
 	{
+		createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
 		name: { type: String, required: true },
 		category: { type: String, required: true },
 		price: { type: Number, required: true },

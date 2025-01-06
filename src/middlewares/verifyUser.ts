@@ -4,7 +4,6 @@ import { Response, NextFunction } from "express";
 
 export const verifyUser = (req: any, res: Response, next: NextFunction) => {
 	const token = req.header("Authorization")?.split(" ")[1];
-	console.log(token);
 
 	if (!token) {
 		res.status(401).json({

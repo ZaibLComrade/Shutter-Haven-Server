@@ -12,7 +12,7 @@ productsRoute.post(
 	verifyRole([userRole.SELLER]),
 	ProductController.createProduct
 );
-productsRoute.get("/", ProductController.getAllProducts);
+productsRoute.get("/", verifyUser, ProductController.getAllProducts);
 productsRoute.get("/:id", ProductController.getProductById);
 productsRoute.put(
 	"/:id",

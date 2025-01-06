@@ -4,7 +4,8 @@ import { Request, Response } from "express";
 import * as ProductService from "./products.service";
 
 export const createProduct = catchAsync(async (req: Request, res: Response) => {
-	const data = await ProductService.createProduct(req.body);
+	const userId = req?.user.id;
+	const data = await ProductService.createProduct(req.body, userId);
 	if (!data) throw new ApiError(400, "Could not create product");
 	res.status(200).json({
 		success: true,
