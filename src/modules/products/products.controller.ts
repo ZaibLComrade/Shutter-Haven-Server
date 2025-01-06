@@ -18,8 +18,8 @@ export const createProduct = catchAsync(async (req: Request, res: Response) => {
 export const getAllProducts = catchAsync(
 	async (req: Request, res: Response) => {
 		const query: { createdBy?: string } = {};
-		const userId = req.query.id
-		if(userId) query.createdBy = userId as string;
+		const userId = req.query.id;
+		if (userId) query.createdBy = userId as string;
 
 		const data = await ProductService.getAllProducts(query);
 		if (!data) throw new ApiError(404, "Products not found");
@@ -58,7 +58,7 @@ export const updateProduct = catchAsync(async (req: Request, res: Response) => {
 	});
 });
 
-export const deleteProduct = async (req: Request, res: Response) => {
+export const deleteProduct = catchAsync(async (req: Request, res: Response) => {
 	const data = await ProductService.deleteProduct(req.params.id);
 	if (!data) {
 		throw new ApiError(404, "Product not found");
@@ -69,4 +69,4 @@ export const deleteProduct = async (req: Request, res: Response) => {
 		message: "Product deleted successfully",
 		data,
 	});
-};
+});
