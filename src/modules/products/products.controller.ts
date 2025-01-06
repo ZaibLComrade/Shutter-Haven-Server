@@ -53,7 +53,7 @@ export const updateProduct = catchAsync(async (req: Request, res: Response) => {
 	res.status(200).json({
 		succcess: true,
 		statusCode: 200,
-		message: "Product deleted successfully",
+		message: "Product updated successfully",
 		data,
 	});
 });
