@@ -8,7 +8,7 @@ export const createProduct = async (data: IProduct, userId: string) => {
 	}
 };
 
-export const getAllProducts = async (query?: any = {}) => {
+export const getAllProducts = async (query: any = {}) => {
 	return await Product.find(query);
 };
 

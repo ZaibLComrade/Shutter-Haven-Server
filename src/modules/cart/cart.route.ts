@@ -14,13 +14,13 @@ const cartRouter = Router();
 cartRouter.get("/", verifyUser, verifyRole([userRole.BUYER]), getUserCart);
 cartRouter.post("/", verifyUser, verifyRole([userRole.BUYER]), addItemToCart);
 cartRouter.patch(
-	"/",
+	"/:productId",
 	verifyUser,
 	verifyRole([userRole.BUYER]),
 	updateCartItemQuantity
 );
 cartRouter.delete(
-	"/",
+	"/:productId",
 	verifyUser,
 	verifyRole([userRole.BUYER]),
 	removeItemFromCart

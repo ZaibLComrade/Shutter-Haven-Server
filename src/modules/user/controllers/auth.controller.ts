@@ -67,6 +67,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
 		success: true,
 		statusCode: 200,
 		message: "User logged in successfully",
+		token,
 		data: user,
 	});
 });

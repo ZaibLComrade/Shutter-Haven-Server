@@ -17,7 +17,11 @@ export const createProduct = catchAsync(async (req: Request, res: Response) => {
 
 export const getAllProducts = catchAsync(
 	async (req: Request, res: Response) => {
-		const data = await ProductService.getAllProducts();
+		const query: { createdBy?: string } = {};
+		const userId = req.query.id
+		if(userId) query.createdBy = userId as string;
+
+		const data = await ProductService.getAllProducts(query);
 		if (!data) throw new ApiError(404, "Products not found");
 		res.status(200).json({
 			succcess: true,

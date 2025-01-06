@@ -1,7 +1,7 @@
 export enum UserRole {
-	ADMIN = "Admin",
-	BUYER = "Buyer",
-	SELLER = "Seller",
+	ADMIN = "ADMIN",
+	BUYER = "BUYER",
+	SELLER = "SELLER",
 }
 
 export interface ICartItem {
