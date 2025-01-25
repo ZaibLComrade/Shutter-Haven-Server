@@ -15,7 +15,7 @@ app.set("trust proxy", 1);
 app.use(rateLimiter_1.rateLimiter);
 app.use(speedLimiter_1.speedLimiter);
 app.use((0, cors_1.default)({
-    origin: ["*"],
+    origin: "*",
     credentials: true,
 }));
 app.use(express_1.default.json({ limit: "10kb" }));

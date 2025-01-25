@@ -3,8 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import router from "./routes";
-import {speedLimiter} from "./utils/speedLimiter";
-import {rateLimiter} from "./utils/rateLimiter";
+import { speedLimiter } from "./utils/speedLimiter";
+import { rateLimiter } from "./utils/rateLimiter";
 
 const app: Express = express();
 
@@ -14,7 +14,7 @@ app.use(speedLimiter);
 
 app.use(
 	cors({
-		origin: ["*"],
+		origin: "*",
 		credentials: true,
 	})
 );
