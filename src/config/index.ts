@@ -10,4 +10,5 @@ export const config = {
 	port: process.env.PORT ?? 5000,
 	db_uri: process.env.DB_URI as string,
 	jwt_secret: process.env.JWT_SECRET as string,
+	compass_uri: process.env.COMPASS_URI,
 }

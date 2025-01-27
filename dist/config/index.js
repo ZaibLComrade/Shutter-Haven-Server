@@ -14,4 +14,5 @@ exports.config = {
     port: (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 5000,
     db_uri: process.env.DB_URI,
     jwt_secret: process.env.JWT_SECRET,
+    compass_uri: process.env.COMPASS_URI,
 };
