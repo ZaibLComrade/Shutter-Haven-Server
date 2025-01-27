@@ -7,7 +7,7 @@ let server: Server;
 
 const main = async () => {
 	try {
-		await connect(config.db_uri, { dbName: "shutterHaven" });
+		await connect(config.compass_uri, { dbName: "shutterHaven" });
 		console.info("==== Connected to MongoDB ====");
 		server = app.listen(config.port, async () => {
 			console.log(`Server is running on port ${config.port}`);
