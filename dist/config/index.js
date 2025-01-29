@@ -15,4 +15,5 @@ exports.config = {
     db_uri: process.env.DB_URI,
     jwt_secret: process.env.JWT_SECRET,
     compass_uri: process.env.COMPASS_URI,
+    hmac_secret: process.env.HMAC_SECRET,
 };

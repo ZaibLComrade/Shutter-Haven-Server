@@ -18,7 +18,7 @@ const config_1 = require("./config");
 let server;
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, mongoose_1.connect)(config_1.config.compass_uri, { dbName: "shutterHaven" });
+        yield (0, mongoose_1.connect)(config_1.config.db_uri, { dbName: "shutterHaven" });
         console.info("==== Connected to MongoDB ====");
         server = app_1.default.listen(config_1.config.port, () => __awaiter(void 0, void 0, void 0, function* () {
             console.log(`Server is running on port ${config_1.config.port}`);

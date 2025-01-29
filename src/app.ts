@@ -5,6 +5,7 @@ import globalErrorHandler from "./middlewares/globalErrorHandler";
 import router from "./routes";
 import { speedLimiter } from "./utils/speedLimiter";
 import { rateLimiter } from "./utils/rateLimiter";
+import hmacMiddleware from "./middlewares/hmacMiddleware";
 
 const app: Express = express();
 
@@ -20,7 +21,7 @@ app.use(
 );
 app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
-app.use("/api/v1", router);
+app.use("/api/v1", hmacMiddleware, router);
 
 app.all("/health", (_req, res) => {
 	res.status(200).json({

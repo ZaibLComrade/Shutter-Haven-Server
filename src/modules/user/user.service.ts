@@ -1,8 +1,14 @@
 import User from "./user.model";
 import { IUser } from "./user.interface";
+import hashPass from "../../utils/hashPass";
 
 export const registerUser = async (userData: IUser) => {
-	const user = new User(userData);
+	const hashedPassword = hashPass(userData.password, "", "sha256");
+
+	const user = new User({
+		...userData,
+		password: hashedPassword,
+	});
 	return await user.save();
 };
 

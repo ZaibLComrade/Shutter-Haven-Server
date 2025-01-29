@@ -11,3 +11,12 @@ export type TSearchQuery = {
 	_id?: string,
 	user?: string,
 }
+
+export type IUser = {
+	_id?: string;
+	name: string;
+	email: string;
+	password: string;
+	role: UserRole;
+	cart: ICartItem[];
+}
